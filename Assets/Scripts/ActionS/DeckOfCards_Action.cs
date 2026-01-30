@@ -7,24 +7,21 @@ public class DeckOfCards_Action : MonoBehaviour
     //public Transform Entity;
     public List<Transform> Deck;
 
+    public Hands_Action HandOne;
+    public Hands_Action HandTwo;
+    public Hands_Action playerHand;
+    public Hands_Action HandFour;
+
+    // D send all cards to the deck
+    // R Randomize pos of all cards in the deck only
+    // S shuffle cards in the deck
+    // Space give 7 cards the all hands
+    // P give one card to the player hand
+    // F give all cards in the hand to the discard pile
+
     private void Start()
     {
         MakeDeck();
-        //ActionSystem.Instance.Actions.Enqueue(
-        //    new MoveAction(Entity, new Vector3(10, 0, 0f), delaySeconds: 0.5f, durationSeconds: 1.5f)
-        //);
-
-        //for (int i = 0; i < Deck.Count; i++)
-        //{
-        //    ActionSystem.Instance.Actions.Enqueue(
-        //    new RotateAction(Deck[i], Quaternion.Euler(0f, 180f, 0f), delaySeconds: 2.0f, durationSeconds: 0.75f)
-        //    );
-        //}
-
-
-        //ActionSystem.Instance.Actions.Enqueue(
-        //    new MoveAction(Entity, new Vector3(0f, -20f, 0f), delaySeconds: 0.5f, durationSeconds: 1.5f)
-        //);
     }
 
     private void MakeDeck()
@@ -37,10 +34,15 @@ public class DeckOfCards_Action : MonoBehaviour
 
         for (int i = 0; i < Deck.Count; i++)
         {
+            ////move to 0
+            //ActionSystem.Instance.Actions.Enqueue(
+            //new MoveAction(Deck[i], new Vector3(0f, 0f, 0f), delaySeconds: 0.0f, durationSeconds: 0.0f)
+            //);
+
             Transform card = Deck[i];
 
             Vector3 stackedPosition = deckPosition + new Vector3(-i * xOffset, -i * yOffset, i * zOffset);
-
+            //offset the post
             ActionSystem.Instance.Actions.Enqueue(
                 new MoveAction(card, stackedPosition, delaySeconds: 0f, durationSeconds: 0.0f)
             );
@@ -49,13 +51,6 @@ public class DeckOfCards_Action : MonoBehaviour
 
     private void MoveAllToDeck()
     {
-        for (int i = 0; i < Deck.Count; ++i)
-        {
-            ActionSystem.Instance.Actions.Enqueue(
-            new MoveAction(Deck[i], new Vector3(0f, 0f, 0f), delaySeconds: 0.1f, durationSeconds: 0.1f)
-            );
-        }
-
         MakeDeck();
     }
 
@@ -88,7 +83,7 @@ public class DeckOfCards_Action : MonoBehaviour
         }
     }
 
-    private void ShuffleDeck()
+    public void ShuffleDeck()
     {
         ShuffleCards();
 
@@ -121,6 +116,56 @@ public class DeckOfCards_Action : MonoBehaviour
         MakeDeck();
     }
 
+    public void GiveCardToHand(Hands_Action theHand)
+    {
+        if (Deck.Count == 0) return; // no cards left
+
+        // Take the top card from the deck
+        Transform card = Deck[Deck.Count - 1];
+        Deck.RemoveAt(Deck.Count - 1);
+
+        // Add it to the hand list
+        theHand.Hand.Add(card);
+
+        // Move the card visually to the hand
+        Vector3 handPosition = theHand.transform.position;
+
+        // Optional: offset cards in hand horizontally
+        float xOffset = -0.7f;
+        float zOffset = 0.01f;
+        float handWidth = (theHand.Hand.Count - 1) * xOffset;
+
+        Vector3 targetPos = handPosition + new Vector3(theHand.Hand.Count * xOffset - handWidth / 2f, 
+                                                       0f,
+                                                       theHand.Hand.Count * zOffset);
+
+        // Animate move
+        ActionSystem.Instance.Actions.Enqueue(
+            new MoveAction(card, targetPos, delaySeconds: 0f, durationSeconds: 0.2f)
+        );
+
+        //flip card if it is the players hand
+        if(theHand == playerHand)
+        {
+            //flip the card
+            ActionSystem.Instance.Actions.Enqueue(
+            new RotateAction(card, Quaternion.Euler(0f, 180f, 0f), delaySeconds: 0.0f, durationSeconds: 0.1f)
+            );
+        }
+        
+    }
+
+    public void StartTheGame()
+    {
+        for(int i = 0; i < 8; ++i)
+        {
+            GiveCardToHand(HandOne);
+            GiveCardToHand(HandTwo);
+            GiveCardToHand(playerHand);
+            GiveCardToHand(HandFour);
+        }
+    }
+
     private void Update()
     {
         //make deck again
@@ -138,14 +183,19 @@ public class DeckOfCards_Action : MonoBehaviour
         //make deck again shuffle the deck
         if (Input.GetKeyDown(KeyCode.S))
         {
-            MoveAllToDeck();
             ShuffleDeck();
         }
 
         //play give cards to different hands
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartTheGame();
+        }
+
+        //test give card to the hands
         if (Input.GetKeyDown(KeyCode.P))
         {
-            RandomPlace();
+            GiveCardToHand(playerHand);
         }
     }
 
