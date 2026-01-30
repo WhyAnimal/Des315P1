@@ -732,6 +732,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2645656531319418417, guid: a2ac563d846b80f4a9d0b5262126c902, type: 3}
+      propertyPath: DeckScript
+      value: 
+      objectReference: {fileID: 31919270}
     - target: {fileID: 5184120631517687820, guid: a2ac563d846b80f4a9d0b5262126c902, type: 3}
       propertyPath: m_Name
       value: Fake Discard
