@@ -6,5 +6,5 @@ public class CardData : ScriptableObject
     public string CardId;
     public string DisplayName;
     public Sprite FrontSprite;
-
+    public Sprite BackSprite;
 }

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardId: 17
   DisplayName: Diamonds 6
-  FrontSprite: {fileID: 7482667652216324306, guid: 22e6a4843693ce747a7967176f807538, type: 3}
+  FrontSprite: {fileID: 21300000, guid: 1805ae8f3d7cd8f43b32f68e38311a72, type: 3}
+  BackSprite: {fileID: 21300000, guid: 14127f26d5f8b3f4482c0407bf17958d, type: 3}

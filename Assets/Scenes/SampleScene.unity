@@ -406,6 +406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card Deck
       objectReference: {fileID: 0}
+    - target: {fileID: 1931146150809025766, guid: 1478978814da8c740a6ae710ea484940, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7957730413429137894, guid: 1478978814da8c740a6ae710ea484940, type: 3}
       propertyPath: m_RootOrder
       value: 1

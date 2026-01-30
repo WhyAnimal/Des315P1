@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardId: 26
   DisplayName: Hearts 2
-  FrontSprite: {fileID: 7482667652216324306, guid: 22e6a4843693ce747a7967176f807538, type: 3}
+  FrontSprite: {fileID: 21300000, guid: 1756de90be05e77489fd476232ad8e65, type: 3}
+  BackSprite: {fileID: 21300000, guid: 14127f26d5f8b3f4482c0407bf17958d, type: 3}

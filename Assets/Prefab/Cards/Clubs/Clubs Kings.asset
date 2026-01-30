@@ -15,3 +15,4 @@ MonoBehaviour:
   CardId: 11
   DisplayName: Clubs King
   FrontSprite: {fileID: 7482667652216324306, guid: 22e6a4843693ce747a7967176f807538, type: 3}
+  BackSprite: {fileID: 21300000, guid: 04b5036c16ed6e447a064bb782972fd1, type: 3}

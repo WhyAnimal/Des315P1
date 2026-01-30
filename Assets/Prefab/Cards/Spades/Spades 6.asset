@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardId: 43
   DisplayName: Spades 6
-  FrontSprite: {fileID: 7482667652216324306, guid: 22e6a4843693ce747a7967176f807538, type: 3}
+  FrontSprite: {fileID: 21300000, guid: eb9de5e45282efa4eb40bb5e956b8ed9, type: 3}
+  BackSprite: {fileID: 21300000, guid: 14127f26d5f8b3f4482c0407bf17958d, type: 3}
