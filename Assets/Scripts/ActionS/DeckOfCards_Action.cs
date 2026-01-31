@@ -12,12 +12,15 @@ public class DeckOfCards_Action : MonoBehaviour
     public Hands_Action playerHand;
     public Hands_Action HandFour;
 
+    public Dealer Dealer;
+
     // D send all cards to the deck
     // R Randomize pos of all cards in the deck only
     // S shuffle cards in the deck
     // Space give 7 cards the all hands
     // P give one card to the player hand
     // F give all cards in the hand to the discard pile
+    // G give one card from the hand to the discard pile
 
     private void Start()
     {
@@ -131,8 +134,8 @@ public class DeckOfCards_Action : MonoBehaviour
         Vector3 handPosition = theHand.transform.position;
 
         // Optional: offset cards in hand horizontally
-        float xOffset = -0.7f;
-        float zOffset = 0.01f;
+        float xOffset = 0f;//-0.7f;
+        float zOffset = 0f;//0.01f;
         float handWidth = (theHand.Hand.Count - 1) * xOffset;
 
         Vector3 targetPos = handPosition + new Vector3(theHand.Hand.Count * xOffset - handWidth / 2f, 
@@ -144,26 +147,39 @@ public class DeckOfCards_Action : MonoBehaviour
             new MoveAction(card, targetPos, delaySeconds: 0f, durationSeconds: 0.2f)
         );
 
-        //flip card if it is the players hand
-        if(theHand == playerHand)
-        {
-            //flip the card
-            ActionSystem.Instance.Actions.Enqueue(
-            new RotateAction(card, Quaternion.Euler(0f, 180f, 0f), delaySeconds: 0.0f, durationSeconds: 0.1f)
+        //flip the correct way
+        ActionSystem.Instance.Actions.Enqueue(
+            new RotateAction(card, theHand.transform.rotation, delaySeconds: 0.0f, durationSeconds: 0.1f)
             );
-        }
+
+        //flip card if it is the players hand
+        //if (theHand == playerHand)
+        //{
+        //    //flip the card
+        //    ActionSystem.Instance.Actions.Enqueue(
+        //    new RotateAction(card, Quaternion.Euler(0f, 180f, 0f), delaySeconds: 0.0f, durationSeconds: 0.1f)
+        //    );
+        //}
+
+
         
     }
 
     public void StartTheGame()
     {
-        for(int i = 0; i < 8; ++i)
+        for(int i = 0; i < 7; ++i)
         {
             GiveCardToHand(HandOne);
             GiveCardToHand(HandTwo);
             GiveCardToHand(playerHand);
             GiveCardToHand(HandFour);
         }
+        //tell each hand to fix the hand placement
+        HandOne.fixHandPlaceMentFlag = true;
+        HandTwo.fixHandPlaceMentFlag = true;
+        playerHand.fixHandPlaceMentFlag = true;
+        HandFour.fixHandPlaceMentFlag = true;
+
     }
 
     private void Update()
@@ -189,13 +205,14 @@ public class DeckOfCards_Action : MonoBehaviour
         //play give cards to different hands
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartTheGame();
+            Dealer.GameStarted = true;
         }
 
         //test give card to the hands
         if (Input.GetKeyDown(KeyCode.P))
         {
             GiveCardToHand(playerHand);
+            playerHand.fixHandPlaceMentFlag = true;
         }
     }
 
