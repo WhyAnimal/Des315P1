@@ -25,6 +25,7 @@ public class DeckOfCards_Action : MonoBehaviour
     private void Start()
     {
         MakeDeck();
+        ShuffleDeck();
     }
 
     private void MakeDeck()
