@@ -152,17 +152,8 @@ public class DeckOfCards_Action : MonoBehaviour
             new RotateAction(card, theHand.transform.rotation, delaySeconds: 0.0f, durationSeconds: 0.1f)
             );
 
-        //flip card if it is the players hand
-        //if (theHand == playerHand)
-        //{
-        //    //flip the card
-        //    ActionSystem.Instance.Actions.Enqueue(
-        //    new RotateAction(card, Quaternion.Euler(0f, 180f, 0f), delaySeconds: 0.0f, durationSeconds: 0.1f)
-        //    );
-        //}
-
-
-        
+        //fix card hand
+        theHand.fixHandPlaceMentFlag = true;
     }
 
     public void StartTheGame()

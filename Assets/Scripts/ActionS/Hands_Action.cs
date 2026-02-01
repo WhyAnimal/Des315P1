@@ -12,6 +12,8 @@ public class Hands_Action : MonoBehaviour
 
     public bool fixHandPlaceMentFlag = false;
 
+    public Vector3 MouseClickPosition;
+
     // Move all cards in hand back to the deck
     public void GiveCardsBackToDeck()
     {
@@ -81,7 +83,7 @@ public class Hands_Action : MonoBehaviour
     public void HandCardsPlacement()
     {
         float cardSpacing = 1.2f;
-        float moveDuration = 0.2f;
+        float moveDuration = 0.1f;
         
         if (Hand.Count == 0) return;
 
@@ -101,11 +103,6 @@ public class Hands_Action : MonoBehaviour
                 new MoveAction(card, targetPos, delaySeconds: 0f, durationSeconds: moveDuration)
             );
 
-            // Optional: match hand rotation
-            ActionSystem.Instance.Actions.Enqueue(
-                new RotateAction(card, transform.rotation, delaySeconds: 0f, durationSeconds: moveDuration)
-            );
-
             if(isPlayerHandFlag == true)
             {
                 //flip the card
@@ -113,10 +110,18 @@ public class Hands_Action : MonoBehaviour
                 new RotateAction(card, Quaternion.Euler(0f, 180f, 0f), delaySeconds: 0.0f, durationSeconds: 0.1f)
                 );
             }
+            else
+            {
+                // Optional: match hand rotation
+                ActionSystem.Instance.Actions.Enqueue(
+                    new RotateAction(card, transform.rotation, delaySeconds: 0f, durationSeconds: moveDuration)
+                );
+            }
+
         }
     }
 
-    public void GiveCardsToDiscard()
+    public void GiveCardsToDiscard(int CardToDiscardIndex = 0)
     {
         if (Hand.Count == 0 || Discard == null) return;
 
@@ -124,9 +129,9 @@ public class Hands_Action : MonoBehaviour
         float zOffset = 0.01f; // Small offset to stack cards properly
         int discardCount = Discard.Discard.Count; // Start stacking on top of existing cards
 
-        Transform card = Hand[0];
-        Hand.RemoveAt(0);                 // Remove from hand
-        Discard.Discard.Add(card);        // Add to Discard list
+        Transform card = Hand[CardToDiscardIndex];
+        Hand.RemoveAt(CardToDiscardIndex);    // Remove from hand
+        Discard.Discard.Add(card);            // Add to Discard list
 
         // Calculate stacked position in Discard
         Vector3 targetPos = discardPosition + new Vector3(0f, 0f, -discardCount * zOffset);
@@ -146,6 +151,54 @@ public class Hands_Action : MonoBehaviour
         }
 
         fixHandPlaceMentFlag = true;
+    }
+
+    public void PlayARound()
+    {
+        if(!isPlayerHandFlag)
+        {
+            //1 in 5 chance it would draw a card
+            if(Random.Range(1, 6) == 1)
+            {
+                //pull a card
+                DeckScript.GiveCardToHand(this);
+            }
+            else
+            {
+                //discard a card
+                GiveCardsToDiscard();
+            }
+            
+        }
+    }
+
+    public bool PlayerClickACard()
+    {
+        if(!isPlayerHandFlag)
+        {
+            return false;
+        }
+        if (!Input.GetMouseButtonDown(0) || Hand.Count == 0)
+        {
+            return false;
+        }
+
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Collider2D hit = Physics2D.OverlapPoint(mouseWorldPos);
+
+        if (hit == null)
+            return false;
+
+        // Check if the clicked object is one of the cards in hand
+        if (Hand.Contains(hit.transform))
+        {
+            int cardIndex = Hand.IndexOf(hit.transform);
+            GiveCardsToDiscard(cardIndex);
+            return true;
+        }
+
+        return false;
     }
 
     private void Update()
@@ -174,6 +227,10 @@ public class Hands_Action : MonoBehaviour
             fixHandPlaceMentFlag = false;
         }
 
-        
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    MouseClickPosition = Input.mousePosition;
+        //    PlayerClickACard();
+        //}
     }
 }

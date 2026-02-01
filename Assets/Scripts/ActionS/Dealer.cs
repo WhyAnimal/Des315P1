@@ -39,19 +39,36 @@ public class Dealer : MonoBehaviour
                 switch (HandsTurn % 4)
                 {
                     case 0:
-                        HandOne.GiveCardsToDiscard();
+                        if (HandOne.Hand.Count > 0)
+                        {
+                            HandOne.PlayARound();
+                        }
                         ++HandsTurn;
                         break;
                     case 1:
-                        HandTwo.GiveCardsToDiscard();
+                        if (HandTwo.Hand.Count > 0)
+                        {
+                            HandTwo.PlayARound();
+                        }
                         ++HandsTurn;
                         break;
                     case 2:
-                        //playerHand.GiveCardsToDiscard();
-                        //++HandsTurn;
+                        if (playerHand.PlayerClickACard())
+                        {
+                            ++HandsTurn;
+                        }
+
+                        if(playerHand.Hand.Count == 0)
+                        {
+                            ++HandsTurn;
+                        }
+
                         break;
                     case 3:
-                        HandFour.GiveCardsToDiscard();
+                        if (HandFour.Hand.Count > 0)
+                        {
+                            HandFour.PlayARound();
+                        }
                         ++HandsTurn;
                         break;
                 };
