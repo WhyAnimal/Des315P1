@@ -226,11 +226,5 @@ public class Hands_Action : MonoBehaviour
             HandCardsPlacement();
             fixHandPlaceMentFlag = false;
         }
-
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    MouseClickPosition = Input.mousePosition;
-        //    PlayerClickACard();
-        //}
     }
 }

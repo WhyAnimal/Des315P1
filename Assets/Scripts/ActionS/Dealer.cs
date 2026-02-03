@@ -52,15 +52,26 @@ public class Dealer : MonoBehaviour
                         }
                         ++HandsTurn;
                         break;
-                    case 2:
+                    case 2: // player hand
                         if (playerHand.PlayerClickACard())
                         {
                             ++HandsTurn;
                         }
+                        else
+                        {
+                            //grab a card from the deck if pleyer clicks it
 
-                        if(playerHand.Hand.Count == 0)
+                            //if(DeckPile.PlayerClickedDiscardPile())
+                            //{
+                            //    ++HandsTurn;
+                            //}
+                        }
+
+
+                        if (playerHand.Hand.Count == 0)
                         {
                             ++HandsTurn;
+
                         }
 
                         break;

@@ -145,7 +145,7 @@ public class DeckOfCards_Action : MonoBehaviour
 
         // Animate move
         ActionSystem.Instance.Actions.Enqueue(
-            new MoveAction(card, targetPos, delaySeconds: 0f, durationSeconds: 0.2f)
+            new MoveAction(card, targetPos, delaySeconds: 0f, durationSeconds: 0.2f, false, 1)
         );
 
         //flip the correct way
@@ -172,6 +172,11 @@ public class DeckOfCards_Action : MonoBehaviour
         playerHand.fixHandPlaceMentFlag = true;
         HandFour.fixHandPlaceMentFlag = true;
 
+    }
+
+    public bool PlayerClickedDiscardPile()
+    {
+        return false;
     }
 
     private void Update()
