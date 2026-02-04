@@ -121,9 +121,14 @@ public class Hands_Action : MonoBehaviour
         }
     }
 
-    public void GiveCardsToDiscard(int CardToDiscardIndex = 0)
+    public void GiveCardsToDiscard(int CardToDiscardIndex = -1)
     {
         if (Hand.Count == 0 || Discard == null) return;
+
+        if(CardToDiscardIndex == -1)
+        {
+            CardToDiscardIndex = Random.Range(0, Hand.Count);
+        }
 
         Vector3 discardPosition = Discard.transform.position; // Base position of the Discard
         float zOffset = 0.01f; // Small offset to stack cards properly
