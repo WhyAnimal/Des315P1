@@ -9,7 +9,7 @@ public sealed class MoveAction : GameAction
 
     private Vector3 _fromPosition;
 
-    public MoveAction(Transform target, Vector3 toPosition, float delaySeconds, float durationSeconds, bool useLocal = false, int EasingType = 0)
+    public MoveAction(Transform target, Vector3 toPosition, float delaySeconds, float durationSeconds, bool useLocal = false, int EasingType = 1) // set EasingType to 0 for liner and 1 for easeOutSine
         : base(delaySeconds, durationSeconds)
     {
         _target = target;
