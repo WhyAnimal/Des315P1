@@ -82,7 +82,7 @@ public class Hands_Action : MonoBehaviour
 
     public void HandCardsPlacement()
     {
-        float cardSpacing = 1.2f;
+        float cardSpacing = Random.Range(0.4f, 0.7f);
         float moveDuration = 0.1f;
         
         if (Hand.Count == 0) return;
@@ -98,6 +98,8 @@ public class Hands_Action : MonoBehaviour
 
             float offset = (i - middleIndex) * cardSpacing;
             Vector3 targetPos = centerPos + rightDir * offset;
+
+            targetPos.z -=  0.1f * i;
 
             ActionSystem.Instance.Actions.Enqueue(
                 new MoveAction(card, targetPos, delaySeconds: 0f, durationSeconds: moveDuration)
@@ -118,6 +120,8 @@ public class Hands_Action : MonoBehaviour
                 );
             }
 
+            //get next card spacing
+            cardSpacing = Random.Range(0.4f, 0.7f);
         }
     }
 
