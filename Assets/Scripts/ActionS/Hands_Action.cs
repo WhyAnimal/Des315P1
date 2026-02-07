@@ -82,7 +82,8 @@ public class Hands_Action : MonoBehaviour
 
     public void HandCardsPlacement()
     {
-        float cardSpacing = Random.Range(0.4f, 0.7f);
+        float baseSpacing = Random.Range(0.45f, 0.65f);
+        float overlapAmount = 0.25f;
         float moveDuration = 0.1f;
         
         if (Hand.Count == 0) return;
@@ -92,14 +93,43 @@ public class Hands_Action : MonoBehaviour
 
         float middleIndex = (Hand.Count - 1) / 2f;
 
+        float radius = 0f;
+
         for (int i = 0; i < Hand.Count; i++)
         {
             Transform card = Hand[i];
 
-            float offset = (i - middleIndex) * cardSpacing;
+            //set x offset 
+
+            float randomOverlap = Random.Range(-overlapAmount, overlapAmount);
+            float offset = (i - middleIndex) * baseSpacing + randomOverlap;
             Vector3 targetPos = centerPos + rightDir * offset;
 
-            targetPos.z -=  0.1f * i;
+            //set y offset
+            //draw a circle around the hand
+
+            Vector3 origin = this.transform.position;
+            float dx = targetPos.x - origin.x;
+
+            if (i == 0)
+            {
+                radius = dx;
+
+            }
+
+            float inside = radius * radius - dx * dx;
+
+            if (inside >= 0f)
+            {
+                targetPos.y = origin.y + Mathf.Sqrt(inside);
+            }
+            else
+            {
+                targetPos.y = origin.y;
+            }
+
+            //set z offset
+            targetPos.z -= 0.1f * i;
 
             ActionSystem.Instance.Actions.Enqueue(
                 new MoveAction(card, targetPos, delaySeconds: 0f, durationSeconds: moveDuration)
@@ -119,9 +149,6 @@ public class Hands_Action : MonoBehaviour
                     new RotateAction(card, transform.rotation, delaySeconds: 0f, durationSeconds: moveDuration)
                 );
             }
-
-            //get next card spacing
-            cardSpacing = Random.Range(0.4f, 0.7f);
         }
     }
 
