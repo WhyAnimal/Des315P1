@@ -85,7 +85,8 @@ public class Hands_Action : MonoBehaviour
         float baseSpacing = Random.Range(0.45f, 0.65f);
         float overlapAmount = 0.25f;
         float moveDuration = 0.1f;
-        
+        float curveHeight = 0.5f;
+
         if (Hand.Count == 0) return;
 
         Vector3 centerPos = transform.position;
@@ -93,7 +94,7 @@ public class Hands_Action : MonoBehaviour
 
         float middleIndex = (Hand.Count - 1) / 2f;
 
-        float radius = 0f;
+        
 
         for (int i = 0; i < Hand.Count; i++)
         {
@@ -106,27 +107,11 @@ public class Hands_Action : MonoBehaviour
             Vector3 targetPos = centerPos + rightDir * offset;
 
             //set y offset
-            //draw a circle around the hand
+            curveHeight = Random.Range(0.2f, 0.8f);
 
-            Vector3 origin = this.transform.position;
-            float dx = targetPos.x - origin.x;
-
-            if (i == 0)
-            {
-                radius = dx;
-
-            }
-
-            float inside = radius * radius - dx * dx;
-
-            if (inside >= 0f)
-            {
-                targetPos.y = origin.y + Mathf.Sqrt(inside);
-            }
-            else
-            {
-                targetPos.y = origin.y;
-            }
+            float normalizedIndex = (i - middleIndex) / middleIndex;
+            float yOffset = -normalizedIndex * normalizedIndex * curveHeight + (curveHeight * 0.8f);
+            targetPos += transform.up * yOffset;
 
             //set z offset
             targetPos.z -= 0.1f * i;
