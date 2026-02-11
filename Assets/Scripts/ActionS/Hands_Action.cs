@@ -109,8 +109,8 @@ public class Hands_Action : MonoBehaviour
             //set y offset
             curveHeight = Random.Range(0.2f, 0.8f);
 
-            float normalizedIndex = (i - middleIndex) / middleIndex;
-            float yOffset = -normalizedIndex * normalizedIndex * curveHeight + (curveHeight * 0.8f);
+            float distanceFromCenter = i - middleIndex;
+            float yOffset = -(distanceFromCenter * distanceFromCenter) * curveHeight * 0.2f + curveHeight;
             targetPos += transform.up * yOffset;
 
             //set z offset
@@ -176,21 +176,20 @@ public class Hands_Action : MonoBehaviour
 
     public void PlayARound()
     {
-        if(!isPlayerHandFlag)
+        
+        //1 in 5 chance it would draw a card
+        if(Random.Range(1, 6) == 1)
         {
-            //1 in 5 chance it would draw a card
-            if(Random.Range(1, 6) == 1)
-            {
-                //pull a card
-                DeckScript.GiveCardToHand(this);
-            }
-            else
-            {
-                //discard a card
-                GiveCardsToDiscard();
-            }
-            
+            //pull a card
+            DeckScript.GiveCardToHand(this);
         }
+        else
+        {
+            //discard a card
+            GiveCardsToDiscard();
+        }
+            
+        
     }
 
     public bool PlayerClickACard()

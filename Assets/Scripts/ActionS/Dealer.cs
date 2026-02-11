@@ -18,6 +18,14 @@ public class Dealer : MonoBehaviour
 
     public int HandsTurn = -1;
 
+    public bool AutoPlay = false;
+
+    public bool HandOneEmpty = false;
+    public bool HandTwoEmpty = false;
+    public bool HandPlayerEmpty = false;
+    public bool HandFourEmpty = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +35,18 @@ public class Dealer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            //ActionSystem.Instance.Actions.Clear();
+            //turn on the main menu
+
+        }
+
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            AutoPlay = true;
+        }
+
         if(GameStarted)
         {
             if(HandsTurn == -1)
@@ -43,6 +63,10 @@ public class Dealer : MonoBehaviour
                         {
                             HandOne.PlayARound();
                         }
+                        else
+                        {
+                            HandOneEmpty = true;
+                        }
                         ++HandsTurn;
                         break;
                     case 1:
@@ -50,28 +74,37 @@ public class Dealer : MonoBehaviour
                         {
                             HandTwo.PlayARound();
                         }
+                        else
+                        {
+                            HandTwoEmpty = true;
+                        }
                         ++HandsTurn;
                         break;
                     case 2: // player hand
-                        if (playerHand.PlayerClickACard())
+                        if(AutoPlay)
                         {
+                            playerHand.PlayARound();
                             ++HandsTurn;
                         }
                         else
                         {
-                            //grab a card from the deck if pleyer clicks it
-
-                            //if(DeckPile.PlayerClickedDiscardPile())
-                            //{
-                            //    ++HandsTurn;
-                            //}
+                            if (playerHand.PlayerClickACard())
+                            {
+                                ++HandsTurn;
+                            }
+                            else
+                            {
+                                //draw discard card on click
+                            }
                         }
 
-
-                        if (playerHand.Hand.Count == 0)
+                        if (playerHand.Hand.Count > 0)
                         {
-                            ++HandsTurn;
 
+                        }
+                        else
+                        {
+                            HandPlayerEmpty = true;
                         }
 
                         break;
@@ -80,13 +113,19 @@ public class Dealer : MonoBehaviour
                         {
                             HandFour.PlayARound();
                         }
-                        ++HandsTurn;
+                        else
+                        {
+                            HandFourEmpty = true;
+                        }
+                            ++HandsTurn;
                         break;
                 };
+
+                if(HandOneEmpty && HandTwoEmpty && HandPlayerEmpty && HandFourEmpty)
+                {
+                    GameStarted = false;
+                }
             }
-
-
-
         }
 
     }

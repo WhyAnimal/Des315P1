@@ -21,6 +21,8 @@ public class DeckOfCards_Action : MonoBehaviour
     // P give one card to the player hand
     // F give all cards in the hand to the discard pile
     // G give one card from the hand to the discard pile
+    // T to turn on auto play
+    // Esc to open the main menu
 
     private void Start()
     {
@@ -203,6 +205,11 @@ public class DeckOfCards_Action : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Dealer.GameStarted = true;
+            Dealer.AutoPlay = false;
+            Dealer.HandOneEmpty = false;
+            Dealer.HandTwoEmpty = false;
+            Dealer.HandPlayerEmpty = false;
+            Dealer.HandFourEmpty = false;
         }
 
         //test give card to the hands
