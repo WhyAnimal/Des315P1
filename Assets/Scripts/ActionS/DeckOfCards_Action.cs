@@ -161,12 +161,31 @@ public class DeckOfCards_Action : MonoBehaviour
 
     public void StartTheGame()
     {
-        for(int i = 0; i < 7; ++i)
+        for(int i = 0; i < Dealer.HANDSIZE; ++i)
         {
-            GiveCardToHand(HandOne);
-            GiveCardToHand(HandTwo);
-            GiveCardToHand(playerHand);
-            GiveCardToHand(HandFour);
+            switch (Dealer.HANDAMOUNT)
+            {
+                case 2: // hand 1 and player
+                    GiveCardToHand(HandOne);
+                    GiveCardToHand(playerHand);
+                    break;
+                case 3: // hand 1 2 and player
+
+                    break;
+                case 4: // all four hands
+                    GiveCardToHand(HandOne);
+                    GiveCardToHand(HandTwo);
+                    GiveCardToHand(playerHand);
+                    GiveCardToHand(HandFour);
+                    break;
+                default:
+                    GiveCardToHand(HandOne);
+                    GiveCardToHand(HandTwo);
+                    GiveCardToHand(playerHand);
+                    GiveCardToHand(HandFour);
+                    break;
+            };
+            
         }
         //tell each hand to fix the hand placement
         HandOne.fixHandPlaceMentFlag = true;
@@ -201,16 +220,7 @@ public class DeckOfCards_Action : MonoBehaviour
             ShuffleDeck();
         }
 
-        //play give cards to different hands
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Dealer.GameStarted = true;
-            Dealer.AutoPlay = false;
-            Dealer.HandOneEmpty = false;
-            Dealer.HandTwoEmpty = false;
-            Dealer.HandPlayerEmpty = false;
-            Dealer.HandFourEmpty = false;
-        }
+        
 
         //test give card to the hands
         if (Input.GetKeyDown(KeyCode.P))

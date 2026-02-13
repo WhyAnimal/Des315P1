@@ -25,6 +25,11 @@ public class Dealer : MonoBehaviour
     public bool HandPlayerEmpty = false;
     public bool HandFourEmpty = false;
 
+    //menu things
+
+    public float PLAYSPEED = 1.0f;
+    public int HANDSIZE = 7;
+    public int HANDAMOUNT = 4;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +40,9 @@ public class Dealer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        Time.timeScale = PLAYSPEED;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             //ActionSystem.Instance.Actions.Clear();
             //turn on the main menu
@@ -44,7 +51,7 @@ public class Dealer : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.T))
         {
-            AutoPlay = true;
+            AutoPlay = !AutoPlay;
         }
 
         if(GameStarted)
@@ -124,7 +131,20 @@ public class Dealer : MonoBehaviour
                 if(HandOneEmpty && HandTwoEmpty && HandPlayerEmpty && HandFourEmpty)
                 {
                     GameStarted = false;
+                    AutoPlay = false;
                 }
+            }
+        }
+        else
+        {
+            //play give cards to different hands
+            if (Input.GetKeyDown(KeyCode.Space) || AutoPlay == true)
+            {
+                GameStarted = true;
+                HandOneEmpty = false;
+                HandTwoEmpty = false;
+                HandPlayerEmpty = false;
+                HandFourEmpty = false;
             }
         }
 
