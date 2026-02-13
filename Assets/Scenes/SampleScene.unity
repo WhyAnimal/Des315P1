@@ -704,6 +704,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1714924515}
     - target: {fileID: -1106755971183158028, guid: 19dfc2d1dcfa9e546a4a67926af13f25, type: 3}
+      propertyPath: TrickPile
+      value: 
+      objectReference: {fileID: 953605290}
+    - target: {fileID: -1106755971183158028, guid: 19dfc2d1dcfa9e546a4a67926af13f25, type: 3}
       propertyPath: DeckScript
       value: 
       objectReference: {fileID: 31919270}
@@ -804,7 +808,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &385198384
 GameObject:
@@ -1025,7 +1029,7 @@ RectTransform:
   - {fileID: 1098526251}
   - {fileID: 717354163}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1896,6 +1900,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650133719}
   m_CullTransparentMesh: 1
+--- !u!1001 &682397691
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3692370379290257092, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_Name
+      value: Fake Trick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631971416609697173, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
 --- !u!1 &717354162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,6 +2003,10 @@ PrefabInstance:
       propertyPath: Discard
       value: 
       objectReference: {fileID: 1714924515}
+    - target: {fileID: -1106755971183158028, guid: 19dfc2d1dcfa9e546a4a67926af13f25, type: 3}
+      propertyPath: TrickPile
+      value: 
+      objectReference: {fileID: 953605290}
     - target: {fileID: -1106755971183158028, guid: 19dfc2d1dcfa9e546a4a67926af13f25, type: 3}
       propertyPath: DeckScript
       value: 
@@ -2244,6 +2309,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804826955}
   m_CullTransparentMesh: 1
+--- !u!1 &953605289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3692370379290257092, guid: d1034b4806188f7469fabf8ec0eae1f3, type: 3}
+  m_PrefabInstance: {fileID: 682397691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &953605290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953605289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af535dd74702f0640922d931297bc777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Trick: []
+  Discard: {fileID: 1714924515}
 --- !u!1 &986352841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3013,7 +3097,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1498682781
 GameObject:
@@ -3296,6 +3380,10 @@ PrefabInstance:
       propertyPath: Discard
       value: 
       objectReference: {fileID: 1714924515}
+    - target: {fileID: -1106755971183158028, guid: 19dfc2d1dcfa9e546a4a67926af13f25, type: 3}
+      propertyPath: TrickPile
+      value: 
+      objectReference: {fileID: 953605290}
     - target: {fileID: -1106755971183158028, guid: 19dfc2d1dcfa9e546a4a67926af13f25, type: 3}
       propertyPath: DeckScript
       value: 
@@ -3619,6 +3707,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1714924515}
     - target: {fileID: -1106755971183158028, guid: 19dfc2d1dcfa9e546a4a67926af13f25, type: 3}
+      propertyPath: TrickPile
+      value: 
+      objectReference: {fileID: 953605290}
+    - target: {fileID: -1106755971183158028, guid: 19dfc2d1dcfa9e546a4a67926af13f25, type: 3}
       propertyPath: DeckScript
       value: 
       objectReference: {fileID: 31919270}
@@ -3839,12 +3931,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2142381682}
     - target: {fileID: 1898354261630120056, guid: 19e82f8c70f76cd4ba3c3fcba299517b, type: 3}
+      propertyPath: TrickPile
+      value: 
+      objectReference: {fileID: 953605290}
+    - target: {fileID: 1898354261630120056, guid: 19e82f8c70f76cd4ba3c3fcba299517b, type: 3}
       propertyPath: playerHand
       value: 
       objectReference: {fileID: 2139371006}
     - target: {fileID: 5314988612982590261, guid: 19e82f8c70f76cd4ba3c3fcba299517b, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5314988612982590261, guid: 19e82f8c70f76cd4ba3c3fcba299517b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4036,7 +4132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1528353558961163276, guid: a2ac563d846b80f4a9d0b5262126c902, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.77
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 1528353558961163276, guid: a2ac563d846b80f4a9d0b5262126c902, type: 3}
       propertyPath: m_LocalPosition.y

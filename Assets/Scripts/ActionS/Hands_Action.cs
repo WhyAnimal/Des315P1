@@ -6,6 +6,7 @@ public class Hands_Action : MonoBehaviour
 {
     public List<Transform> Hand;          // Cards currently in hand
     public DeckOfCards_Action DeckScript; // Reference to the deck
+    public Trick_Action TrickPile;
     public Discard_Action Discard;        // Reference to the Discard
 
     public bool isPlayerHandFlag = false;
@@ -174,6 +175,43 @@ public class Hands_Action : MonoBehaviour
         fixHandPlaceMentFlag = true;
     }
 
+    public void GiveCardsToTrick(int CardToTrickIndex = -1)
+    {
+        if (Hand.Count == 0 || TrickPile == null) return;
+
+        if (CardToTrickIndex == -1)
+        {
+            CardToTrickIndex = Random.Range(0, Hand.Count);
+        }
+
+        Vector3 trickPosition = TrickPile.transform.position; // Base position of the TrickPile
+        float zOffset = 0.01f; // Small offset to stack cards properly
+        int trickCount = TrickPile.Trick.Count; // Start stacking on top of existing cards
+
+        Transform card = Hand[CardToTrickIndex];
+        Hand.RemoveAt(CardToTrickIndex);    // Remove from hand
+        TrickPile.Trick.Add(card);            // Add to TrickPile list
+
+        // Calculate stacked position in TrickPile
+        Vector3 targetPos = trickPosition + new Vector3(0f, 0f, -trickCount * zOffset);
+        trickCount++;
+
+        // Animate moving back to TrickPile
+        ActionSystem.Instance.Actions.Enqueue(
+            new MoveAction(card, targetPos, delaySeconds: 0f, durationSeconds: 0.2f)
+        );
+
+        if (!isPlayerHandFlag)
+        {
+            //flip card
+            ActionSystem.Instance.Actions.Enqueue(
+            new RotateAction(card, Quaternion.Euler(0f, 180f, 0f), delaySeconds: 0.1f, durationSeconds: 0.5f)
+            );
+        }
+
+        fixHandPlaceMentFlag = true;
+    }
+
     public void PlayARound()
     {
         
@@ -186,7 +224,8 @@ public class Hands_Action : MonoBehaviour
         else
         {
             //discard a card
-            GiveCardsToDiscard();
+            GiveCardsToTrick();
+            //GiveCardsToDiscard();
         }
             
         
@@ -214,7 +253,8 @@ public class Hands_Action : MonoBehaviour
         if (Hand.Contains(hit.transform))
         {
             int cardIndex = Hand.IndexOf(hit.transform);
-            GiveCardsToDiscard(cardIndex);
+            GiveCardsToTrick(cardIndex);
+            //GiveCardsToDiscard(cardIndex);
             return true;
         }
 

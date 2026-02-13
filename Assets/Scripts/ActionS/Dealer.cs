@@ -11,6 +11,8 @@ public class Dealer : MonoBehaviour
     public Hands_Action HandTwo;
     public Hands_Action playerHand;
     public Hands_Action HandFour;
+
+    public Trick_Action TrickPile;
     //Discard pile
     public Discard_Action Discard;
 
@@ -63,7 +65,7 @@ public class Dealer : MonoBehaviour
             }
             else
             {
-                switch (HandsTurn % 4)
+                switch (HandsTurn % 5)
                 {
                     case 0:
                         if (HandOne.Hand.Count > 0)
@@ -125,6 +127,13 @@ public class Dealer : MonoBehaviour
                             HandFourEmpty = true;
                         }
                             ++HandsTurn;
+                        break;
+                    case 4: // put trick into the discard pile
+                        if(TrickPile.Trick.Count > 0)
+                        {
+                            TrickPile.GiveAllCardsToDiscard();
+                            ++HandsTurn;
+                        }
                         break;
                 };
 
