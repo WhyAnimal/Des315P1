@@ -22,6 +22,8 @@ public class Trick_Action : MonoBehaviour
         float zOffset = 0.01f; // Small offset to stack cards properly
         int discardCount = Discard.Discard.Count; // Start stacking on top of existing cards
 
+        float cardsDelay = 1.5f;
+
         for (int i = Trick.Count - 1; i >= 0; i--)
         {
             Transform card = Trick[i];
@@ -34,8 +36,10 @@ public class Trick_Action : MonoBehaviour
 
             // Animate moving back to Discard
             ActionSystem.Instance.Actions.Enqueue(
-                new MoveAction(card, targetPos, delaySeconds: 0f, durationSeconds: 0.2f)
+                new MoveAction(card, targetPos, delaySeconds: cardsDelay, durationSeconds: 0.2f)
             );
+
+            cardsDelay = 0.0f;
         }
     }
 
