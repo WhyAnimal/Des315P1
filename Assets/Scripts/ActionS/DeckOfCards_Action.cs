@@ -170,7 +170,9 @@ public class DeckOfCards_Action : MonoBehaviour
                     GiveCardToHand(playerHand);
                     break;
                 case 3: // hand 1 2 and player
-
+                    GiveCardToHand(HandOne);
+                    GiveCardToHand(HandTwo);
+                    GiveCardToHand(playerHand);
                     break;
                 case 4: // all four hands
                     GiveCardToHand(HandOne);
