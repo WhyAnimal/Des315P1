@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UI_Manager : MonoBehaviour
 {
+    public Dealer dealerObject;
 
     public List<Button> MainMenu;
 
@@ -146,15 +147,27 @@ public class UI_Manager : MonoBehaviour
 
     public void SetPlaySpeed(float speed)
     {
-        speed *= speed;
+        dealerObject.PLAYSPEED = speed;
+        DisappearPlaySpeedMenu();
     }
 
     /*********************************************************
     *                    Hand Size Menu                      * 
     **********************************************************/
 
+    public void SetHandSize(int HandSize)
+    {
+        dealerObject.HANDSIZE = HandSize;
+        DisappearHandSizeMenu();
+    }
 
     /*********************************************************
     *                    Hand Number Menu                    * 
     **********************************************************/
+
+    public void SetHandNumber(int HandNumber)
+    {
+        dealerObject.HANDNUMBER = HandNumber;
+        DisappearHandNumberMenu();
+    }
 }

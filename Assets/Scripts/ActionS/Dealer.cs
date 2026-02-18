@@ -31,7 +31,7 @@ public class Dealer : MonoBehaviour
 
     public float PLAYSPEED = 1.0f;
     public int HANDSIZE = 7;
-    public int HANDAMOUNT = 4;
+    public int HANDNUMBER = 4;
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +74,7 @@ public class Dealer : MonoBehaviour
                         }
                         else
                         {
-                            HandOneEmpty = true;
+                            //HandOneEmpty = true;
                         }
                         ++HandsTurn;
                         break;
@@ -85,7 +85,7 @@ public class Dealer : MonoBehaviour
                         }
                         else
                         {
-                            HandTwoEmpty = true;
+                            //HandTwoEmpty = true;
                         }
                         ++HandsTurn;
                         break;
@@ -113,7 +113,7 @@ public class Dealer : MonoBehaviour
                         }
                         else
                         {
-                            HandPlayerEmpty = true;
+                            //HandPlayerEmpty = true;
                         }
 
                         break;

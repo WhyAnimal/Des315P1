@@ -163,7 +163,7 @@ public class DeckOfCards_Action : MonoBehaviour
     {
         for(int i = 0; i < Dealer.HANDSIZE; ++i)
         {
-            switch (Dealer.HANDAMOUNT)
+            switch (Dealer.HANDNUMBER)
             {
                 case 2: // hand 1 and player
                     GiveCardToHand(HandOne);
