@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 18583381}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2121959664}
+        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_MethodName: SetPlaySpeed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &18583381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +394,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5486569152963146942, guid: d2ea3d0df474b1d46abac57e39a24cf9, type: 3}
+      propertyPath: dealerObject
+      value: 
+      objectReference: {fileID: 1222451087}
     - target: {fileID: 5486569152963146942, guid: d2ea3d0df474b1d46abac57e39a24cf9, type: 3}
       propertyPath: HandSize.Array.data[0]
       value: 
@@ -685,7 +701,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 389659866}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2121959664}
+        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_MethodName: SetPlaySpeed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &389659866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1477,7 +1505,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 641892778}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2121959664}
+        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_MethodName: SetHandSize
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &641892778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1534,7 +1574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &661535659
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1599,7 +1639,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 661535661}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2121959664}
+        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_MethodName: SetHandSize
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &661535661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2424,7 +2476,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 921087123}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2121959664}
+        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_MethodName: SetHandNumber
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &921087123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2835,7 +2899,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1097155908}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2121959664}
+        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_MethodName: SetHandNumber
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1097155908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3361,7 +3437,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1180260045}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2121959664}
+        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_MethodName: SetHandSize
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1180260045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3483,7 +3571,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1185489296}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2121959664}
+        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_MethodName: SetPlaySpeed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1185489296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4922,7 +5022,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1884041701}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2121959664}
+        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+        m_MethodName: SetHandNumber
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1884041701
 MonoBehaviour:
   m_ObjectHideFlags: 0
