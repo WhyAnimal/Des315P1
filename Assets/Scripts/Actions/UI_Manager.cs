@@ -26,10 +26,7 @@ public class UI_Manager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            foreach(Button button in MainMenu)
-            {
-                button.gameObject.SetActive(!button.gameObject.activeInHierarchy);
-            }
+            AppearMainMenu();
         }
     }
 
@@ -41,9 +38,18 @@ public class UI_Manager : MonoBehaviour
     {
         foreach (Button button in Menu)
         {
-            button.gameObject.SetActive(!button.gameObject.activeInHierarchy);
+            CanvasGroup cg = button.GetComponent<CanvasGroup>();
+
+            if (cg != null)
+            {
+                cg.alpha = 0;
+                cg.interactable = false;
+                cg.blocksRaycasts = false;
+
+            }
+            //button.gameObject.SetActive(!button.gameObject.activeInHierarchy);
         }
-    }
+        }
 
     public void DisappearMainMenu()
     {
@@ -73,7 +79,16 @@ public class UI_Manager : MonoBehaviour
     {
         foreach (Button button in Menu)
         {
-            button.gameObject.SetActive(!button.gameObject.activeInHierarchy);
+            CanvasGroup cg = button.GetComponent<CanvasGroup>();
+
+            if (cg != null)
+            {
+                cg.alpha = 1;
+                cg.interactable = true;
+                cg.blocksRaycasts = true;
+
+            }
+            //button.gameObject.SetActive(!button.gameObject.activeInHierarchy);
         }
     }
 
