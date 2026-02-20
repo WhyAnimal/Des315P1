@@ -15,6 +15,9 @@ public class UI_Manager : MonoBehaviour
 
     public List<Button> HandNumber;
 
+    public int MainMenuOpened = 0;
+    public int MenusOpened = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -105,21 +108,26 @@ public class UI_Manager : MonoBehaviour
     public void AppearMainMenu()
     {
         AppearMenu(MainMenu);
+        ++MainMenuOpened;
+        ++MenusOpened;
     }
 
     public void AppearPlaySpeedMenu()
     {
         AppearMenu(PlaySpeed);
+        ++MenusOpened;
     }
 
     public void AppearHandSizeMenu()
     {
         AppearMenu(HandSize);
+        ++MenusOpened;
     }
 
     public void AppearHandNumberMenu()
     {
         AppearMenu(HandNumber);
+        ++MenusOpened;
     }
 
     /*********************************************************

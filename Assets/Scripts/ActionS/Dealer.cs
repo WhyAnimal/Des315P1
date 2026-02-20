@@ -39,6 +39,11 @@ public class Dealer : MonoBehaviour
     public int PlayerWins = 0;
     public int FourWins = 0;
 
+    public int OneCardsPlayed = 0;
+    public int TwoCardsPlayed = 0;
+    public int PlayerCardsPlayed = 0;
+    public int FourCardsPlayed = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +82,7 @@ public class Dealer : MonoBehaviour
                         if (HandOne.Hand.Count > 0)
                         {
                             HandOne.PlayARound();
+                            ++OneCardsPlayed;
                         }
                         else
                         {
@@ -88,6 +94,7 @@ public class Dealer : MonoBehaviour
                         if (HandTwo.Hand.Count > 0)
                         {
                             HandTwo.PlayARound();
+                            ++TwoCardsPlayed;
                         }
                         else
                         {
@@ -100,12 +107,14 @@ public class Dealer : MonoBehaviour
                         {
                             playerHand.PlayARound();
                             ++HandsTurn;
+                            ++PlayerCardsPlayed;
                         }
                         else
                         {
                             if (playerHand.PlayerClickACard())
                             {
                                 ++HandsTurn;
+                                ++PlayerCardsPlayed;
                             }
                             else
                             {
@@ -127,6 +136,7 @@ public class Dealer : MonoBehaviour
                         if (HandFour.Hand.Count > 0)
                         {
                             HandFour.PlayARound();
+                            ++FourCardsPlayed;
                         }
                         else
                         {
@@ -134,6 +144,7 @@ public class Dealer : MonoBehaviour
                         }
                             ++HandsTurn;
                         break;
+
                     case 4: // put trick into the discard pile
                         //get who won the game
 
