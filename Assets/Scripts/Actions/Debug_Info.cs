@@ -42,12 +42,16 @@ public class Debug_Info : MonoBehaviour
 
             if (text != null)
             {
-                //text = FPS_INFO.meanFPS;
-                //FPS_INFO.meanFPS;
-                //FPS_INFO.mediumFPS;
-                //FPS_INFO.worstFPS;
+                //fps
+                string meanFPSString = "Mean FPS: " + ((int)(FPS_INFO.meanFPS)).ToString() + "\n";
+                string mediumFPSString = "Medium FPS: " + ((int)(FPS_INFO.mediumFPS)).ToString() + "\n";
+                string worstFPSString = "Worst FPS: " + ((int)(FPS_INFO.worstFPS)).ToString() + "\n";
 
                 //Action List thing idk
+
+
+
+                text.text = meanFPSString + mediumFPSString + worstFPSString;
             }
         }
         else
