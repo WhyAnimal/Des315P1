@@ -28,11 +28,19 @@ public class Debug_Info : MonoBehaviour
             
             if(DEBUGSHOW)
             {
+                //ActionSystem.Instance.Actions.Enqueue(
+                //new FadeInAction(cg, 1.0f, delaySeconds: 0f, durationSeconds: 1)
+                //);
+
                 cg.alpha = 1.0f;//fade in when done
 
             }
             else
             {
+                //ActionSystem.Instance.Actions.Enqueue(
+                //new FadeInAction(cg, 0.0f, delaySeconds: 0f, durationSeconds: 1)
+                //);
+
                 cg.alpha = 0.0f;//fade out when done
             }                
         }

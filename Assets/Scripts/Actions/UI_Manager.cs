@@ -44,7 +44,10 @@ public class UI_Manager : MonoBehaviour
 
             if (cg != null)
             {
-                cg.alpha = 0;
+                ActionSystem.Instance.Actions.Enqueue(
+                new FadeInAction(cg, 0.0f, delaySeconds: 0f, durationSeconds: 0.5f)
+                );
+
                 cg.interactable = false;
                 cg.blocksRaycasts = false;
 
@@ -87,7 +90,10 @@ public class UI_Manager : MonoBehaviour
 
             if (cg != null)
             {
-                cg.alpha = 1;
+                ActionSystem.Instance.Actions.Enqueue(
+                new FadeInAction(cg, 1.0f, delaySeconds: 0f, durationSeconds: 0.5f)
+                );
+
                 cg.interactable = true;
                 cg.blocksRaycasts = true;
 

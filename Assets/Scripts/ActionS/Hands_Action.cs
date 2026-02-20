@@ -95,8 +95,6 @@ public class Hands_Action : MonoBehaviour
 
         float middleIndex = (Hand.Count - 1) / 2f;
 
-        
-
         for (int i = 0; i < Hand.Count; i++)
         {
             Transform card = Hand[i];
@@ -121,20 +119,36 @@ public class Hands_Action : MonoBehaviour
                 new MoveAction(card, targetPos, delaySeconds: 0f, durationSeconds: moveDuration)
             );
 
-            if(isPlayerHandFlag == true)
+            //get the rotation for cards to point at the hand
+
+            Vector3 lookTarget = centerPos - transform.up * 2.0f;
+
+            Vector3 directionToCenter = lookTarget - targetPos;
+
+            // Calculate angle in degrees (Z axis for 2D)
+            float angle = Mathf.Atan2(directionToCenter.y, directionToCenter.x) * Mathf.Rad2Deg;
+            float zAngle = angle - 90f;
+
+            // Adjust so card's "up" points toward center (if needed tweak 90f)
+            Quaternion targetRotation;
+
+            
+
+            if (isPlayerHandFlag == true)
             {
+                angle = Mathf.Atan2(-directionToCenter.y, directionToCenter.x) * Mathf.Rad2Deg;
+                zAngle = angle - 90f;
                 //flip the card
-                ActionSystem.Instance.Actions.Enqueue(
-                new RotateAction(card, Quaternion.Euler(0f, 180f, 0f), delaySeconds: 0.0f, durationSeconds: 0.1f)
-                );
+                targetRotation = Quaternion.Euler(0f, 180f, zAngle);
             }
             else
             {
-                // Optional: match hand rotation
-                ActionSystem.Instance.Actions.Enqueue(
-                    new RotateAction(card, transform.rotation, delaySeconds: 0f, durationSeconds: moveDuration)
-                );
+                targetRotation = Quaternion.Euler(0f, 0f, zAngle);
             }
+
+            ActionSystem.Instance.Actions.Enqueue(
+                new RotateAction(card, targetRotation, delaySeconds: 0f, durationSeconds: moveDuration)
+            );
         }
     }
 

@@ -15,6 +15,7 @@ public class Dealer : MonoBehaviour
     public Trick_Action TrickPile;
     //Discard pile
     public Discard_Action Discard;
+    public Gameplay_Info GameplayUi;
 
     public bool GameStarted = false;
 
@@ -32,6 +33,11 @@ public class Dealer : MonoBehaviour
     public float PLAYSPEED = 1.0f;
     public int HANDSIZE = 7;
     public int HANDNUMBER = 4;
+
+    public int OneWins = 0;
+    public int TwoWins = 0;
+    public int PlayerWins = 0;
+    public int FourWins = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +80,7 @@ public class Dealer : MonoBehaviour
                         }
                         else
                         {
-                            //HandOneEmpty = true;
+                            HandOneEmpty = true;
                         }
                         ++HandsTurn;
                         break;
@@ -85,7 +91,7 @@ public class Dealer : MonoBehaviour
                         }
                         else
                         {
-                            //HandTwoEmpty = true;
+                            HandTwoEmpty = true;
                         }
                         ++HandsTurn;
                         break;
@@ -113,7 +119,7 @@ public class Dealer : MonoBehaviour
                         }
                         else
                         {
-                            //HandPlayerEmpty = true;
+                            HandPlayerEmpty = true;
                         }
 
                         break;
@@ -129,11 +135,60 @@ public class Dealer : MonoBehaviour
                             ++HandsTurn;
                         break;
                     case 4: // put trick into the discard pile
-                        if(TrickPile.Trick.Count > 0)
+                        //get who won the game
+
+                        int whoWon = 0;
+                        switch (HANDNUMBER)
+                        {
+                            case 2: // hand 1 and player
+                                whoWon = Random.Range(1, 3);
+                                if (whoWon == 2)
+                                {
+                                    whoWon = 3;
+                                }
+                                break;
+                            case 3: // hand 1 2 and player
+                                whoWon = Random.Range(1, 4);
+                                break;
+                            case 4: // all four hands
+                                whoWon = Random.Range(1, 5);
+                                break;
+                            default:
+                                whoWon = Random.Range(1, 5);
+                                break;
+                        };
+
+                        switch (whoWon)
+                        {
+                            case 1: // hand 1 won
+                                ++OneWins;
+                                break;
+                            case 2: // hand 2 won
+                                ++TwoWins;
+                                break;
+                            case 3: // hand player won
+                                ++PlayerWins;
+                                break;
+                            case 4: // hand 4 won
+                                ++FourWins;
+                                break;
+                        };
+
+                        //fade in gameplay ui
+                        CanvasGroup cg = GameplayUi.GetComponent<CanvasGroup>();
+                        ActionSystem.Instance.Actions.Enqueue(
+                        new FadeInAction(cg, 1.0f, delaySeconds: 0f, durationSeconds: 1)
+                        );
+
+                        if (TrickPile.Trick.Count > 0)
                         {
                             TrickPile.GiveAllCardsToDiscard();
                             ++HandsTurn;
                         }
+
+                        ActionSystem.Instance.Actions.Enqueue(
+                        new FadeInAction(cg, 0.0f, delaySeconds: 1f, durationSeconds: 1)
+                        );
                         break;
                 };
 
