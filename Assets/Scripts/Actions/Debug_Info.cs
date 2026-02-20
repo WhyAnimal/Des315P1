@@ -7,6 +7,8 @@ public class Debug_Info : MonoBehaviour
 {
     public PreforanceTracker FPS_INFO;
 
+    public ActionSystem actionSystem;
+
     public bool DEBUGSHOW = false;
     // Start is called before the first frame update
     void Start()
@@ -47,22 +49,41 @@ public class Debug_Info : MonoBehaviour
                 string mediumFPSString = "Medium FPS: " + ((int)(FPS_INFO.mediumFPS)).ToString() + "\n";
                 string worstFPSString = "Worst FPS: " + ((int)(FPS_INFO.worstFPS)).ToString() + "\n";
 
-                //Action List thing idk
-
-
-
                 text.text = meanFPSString + mediumFPSString + worstFPSString;
+                //Action List info
+                //number: action name: precentage
+
+                string actionInfo = "Action List Info\n";
+                // Current running action
+                if (actionSystem.Actions.Current != null)
+                {
+                    GameAction current = actionSystem.Actions.Current;
+
+                    string name = current.GetType().Name;
+                    float percent = current.Percent * 100f;
+
+                    actionInfo += $"[RUNNING] {name} : {percent:0}%\n";
+                }
+                else
+                {
+                    actionInfo += "[RUNNING] None\n";
+                }
+
+                // Pending actions
+                var pending = actionSystem.Actions.Pending;
+
+                for (int i = 0; i < pending.Count; i++)
+                {
+                    GameAction action = pending[i];
+                    string name = action.GetType().Name;
+
+                    actionInfo += $"[{i}] {name} : Waiting\n";
+                }
+
+                text.text = text.text + actionInfo;
             }
         }
-        else
-        {
-            //not visable
-
-        }
-        
-        
     }
-
     //need to change text to 
 
     /*

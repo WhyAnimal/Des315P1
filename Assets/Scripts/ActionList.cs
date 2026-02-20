@@ -2,11 +2,13 @@ using System.Collections.Generic;
 
 public sealed class ActionList
 {
-    private readonly List<GameAction> _list = new List<GameAction>();
+    public readonly List<GameAction> _list = new List<GameAction>();
     private GameAction _current;
 
     public int PendingCount => _list.Count;
     public GameAction Current => _current;
+
+    public IReadOnlyList<GameAction> Pending => _list;
 
     public void Enqueue(GameAction action)
     {

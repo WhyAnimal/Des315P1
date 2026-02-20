@@ -1726,6 +1726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FPS_INFO: {fileID: 345065589}
+  actionSystem: {fileID: 305615109}
   DEBUGSHOW: 0
 --- !u!225 &644245856
 CanvasGroup:
