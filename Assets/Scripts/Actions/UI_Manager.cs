@@ -36,6 +36,8 @@ public class UI_Manager : MonoBehaviour
 
     private void DisappearMenu(List<Button> Menu)
     {
+        //fade out when done
+
         foreach (Button button in Menu)
         {
             CanvasGroup cg = button.GetComponent<CanvasGroup>();
@@ -77,6 +79,8 @@ public class UI_Manager : MonoBehaviour
 
     private void AppearMenu(List<Button> Menu)
     {
+        //fade in when done
+
         foreach (Button button in Menu)
         {
             CanvasGroup cg = button.GetComponent<CanvasGroup>();
